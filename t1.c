@@ -1,6 +1,6 @@
 /*
  * CSE30 WI22 HW3
- * Username: cse30wi22xx (Fill in your username)
+ * Username: cse30wi22xfm (Fill in your username)
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -10,9 +10,11 @@
 void copyString(char *copy, const char *strtocopy, size_t size)
 {
    size_t index;
+   
+
    for (index = 0; index < size && strtocopy[index] != '\0'; index++)
 	   copy[index] = strtocopy[index];
-    for ( ; index < size; index++)
+   for ( ; index < size; index++)
 	   copy[index] = '\0';
 }
 
@@ -96,19 +98,24 @@ int main(int argc, char* argv[]) {
 		//list of indices in the list of columns
 		for (int i = 0; i < lenOfList; ++i) {
 			int index = listOfColumns[i];
-			if(index < 0)
+			if(index < 0){
 				index = numberOfColumns + index;
+			}
+			if(i == lenOfList-1)
+			printf("%s",*(stringArray+index));
+			else	
 			printf("%s ",*(stringArray+index));
 		}
+		
 		printf("\n");
 		numLines++;
 	}
 
 	/* Format string for output to be printed when -c option is given */
 	if(startOfList == 3)
-		printf("Number of lines: %d\n"
-		"Longest field: %d characters\n",
-		numLines,longestChar);
+	   printf("Number of lines: %d\n"
+	   "Longest field: %d characters\n",
+	   numLines,longestChar);
 
 	//frees the pointers in the array
 	for (int i = 0; i < numberOfColumns; ++i) {
